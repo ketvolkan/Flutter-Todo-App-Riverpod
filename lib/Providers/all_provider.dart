@@ -10,15 +10,20 @@ import 'package:todoapp/Models/catFact.dart';
 
 final httpClientProvider =
     Provider<Dio>((ref) => Dio(BaseOptions(baseUrl: "https://catfact.ninja/")));
-final catFactsProvider = FutureProvider<List<CatFact>>((ref) async {
+//autoDispose kullanılabilir keepAlive() diye bir methoda sahip
+final catFactsProvider =
+    FutureProvider.family<List<CatFact>, Map<String, dynamic>>(
+        (ref, limitDegeri) async {
   final _dio = ref.watch(httpClientProvider);
-  final _result = await _dio.get("facts");
+  final _result = await _dio.get("facts", queryParameters: limitDegeri);
+
   List<Map<String, dynamic>> _mapData = List.from(_result.data['data']);
   List<CatFact> _catFactList = _mapData.map((e) => CatFact.fromMap(e)).toList();
   return _catFactList;
 });
 final catFactProvider = Provider<Widget>((ref) {
-  var _liste = ref.watch(catFactsProvider);
+  var _liste =
+      ref.watch(catFactsProvider(const {'limit': 7, 'max_length': 100}));
   var rng = Random();
   Widget _widget = _liste.when(data: (liste) {
     return Text(
