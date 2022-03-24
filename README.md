@@ -1,16 +1,15 @@
-# todoapp
+<h1> Riverpod Todo App Example </h1>
 
-A new Flutter project.
+<h2>Flutter Riverpod Kullanarak Yaptığım Bir TodoApp Projesi.</h2>
+<br>
 
-## Getting Started
+![todoapp1](https://user-images.githubusercontent.com/80161667/159888783-72eeebda-5fc4-48b9-9de7-c2d6d7e1285b.png)
+<br>
 
-This project is a starting point for a Flutter application.
+![todoapp2](https://user-images.githubusercontent.com/80161667/159888791-55821656-b5e9-4fe9-a20f-541ff316c4bd.png)
+<br>
 
-A few resources to get you started if this is your first Flutter project:
+![todoapp3](https://user-images.githubusercontent.com/80161667/159888799-02f81902-1564-45d3-b478-7c8dedf3059a.png)
+<br>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![todoapp4](https://user-images.githubusercontent.com/80161667/159888805-56b4b95e-11ab-4f19-96e6-d77b879afc42.png)
