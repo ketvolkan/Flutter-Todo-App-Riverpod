@@ -44,27 +44,28 @@ class _MyListItemsState extends ConsumerState<MyListItems> {
               ref.watch(currentTodo).id, _textEditingController.text);
         }
       },
-      child: Container(
-        margin: EdgeInsets.only(top: 10, left: 5, right: 5),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color:
-                  ref.watch(currentTodo).completed ? Colors.green : Colors.red,
-              blurRadius: 6,
-              offset: Offset(1, 2),
-            ),
-          ],
-        ),
-        child: Dismissible(
-          key: ValueKey(ref.watch(currentTodo).id),
-          onDismissed: (_) {
-            ref
-                .read(todosProvider.notifier)
-                .removeTodo(ref.watch(currentTodo).id);
-          },
+      child: Dismissible(
+        key: ValueKey(ref.watch(currentTodo).id),
+        onDismissed: (_) {
+          ref
+              .read(todosProvider.notifier)
+              .removeTodo(ref.watch(currentTodo).id);
+        },
+        child: Container(
+          margin: EdgeInsets.only(top: 10, left: 5, right: 5),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                color: ref.watch(currentTodo).completed
+                    ? Colors.green
+                    : Colors.red,
+                blurRadius: 6,
+                offset: Offset(1, 2),
+              ),
+            ],
+          ),
           child: ListTile(
             leading: Icon(
               ref.watch(currentTodo).completed
