@@ -13,14 +13,18 @@ class MyListView extends ConsumerWidget {
     TodoListFilter filter = ref.watch(todoListFilter);
     List<Todo> todos = ref.watch(filtredTodos);
     return ListView.builder(
-      itemCount: todos.length,
+      itemCount: todos.length + 1,
       itemBuilder: (BuildContext context, int index) {
-        return ProviderScope(
-          overrides: [
-            currentTodo.overrideWithValue(todos[index]),
-          ],
-          child: const MyListItems(),
-        );
+        return index == todos.length
+            ? SizedBox(
+                height: 40,
+              )
+            : ProviderScope(
+                overrides: [
+                  currentTodo.overrideWithValue(todos[index]),
+                ],
+                child: MyListItems(),
+              );
       },
     );
   }
