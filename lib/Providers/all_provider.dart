@@ -1,7 +1,43 @@
+import 'dart:math';
+
+import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todoapp/Managers/TodoManager.dart';
 import 'package:todoapp/Models/Todo.dart';
+import 'package:todoapp/Models/catFact.dart';
 
+final httpClientProvider =
+    Provider<Dio>((ref) => Dio(BaseOptions(baseUrl: "https://catfact.ninja/")));
+final catFactsProvider = FutureProvider<List<CatFact>>((ref) async {
+  final _dio = ref.watch(httpClientProvider);
+  final _result = await _dio.get("facts");
+  List<Map<String, dynamic>> _mapData = List.from(_result.data['data']);
+  List<CatFact> _catFactList = _mapData.map((e) => CatFact.fromMap(e)).toList();
+  return _catFactList;
+});
+final catFactProvider = Provider<Widget>((ref) {
+  var _liste = ref.watch(catFactsProvider);
+  var rng = Random();
+  Widget _widget = _liste.when(data: (liste) {
+    return Text(
+      liste[rng.nextInt(5)].fact,
+      style: TextStyle(
+        fontSize: 12,
+      ),
+    );
+  }, error: (err, stack) {
+    return Center(
+      child: Text("Bağlantı Kurulamadı ${err.toString()}"),
+    );
+  }, loading: () {
+    return Center(
+      child: CircularProgressIndicator(),
+    );
+  });
+  return _widget;
+});
 final titleProvider = Provider((ref) => "TodoApp");
 final newTodoProvider = StateProvider<String>((ref) => "");
 final todosProvider = StateNotifierProvider<TodosNotifier, List<Todo>>((ref) {

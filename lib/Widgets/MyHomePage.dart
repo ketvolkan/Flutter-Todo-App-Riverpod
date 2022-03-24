@@ -5,6 +5,7 @@ import 'package:todoapp/Widgets/MyCustomForm.dart';
 import 'package:todoapp/Widgets/MyFloatingActionButton.dart';
 import 'package:todoapp/Widgets/MyListView.dart';
 import 'package:todoapp/Widgets/MyTopSection.dart';
+import 'package:todoapp/Widgets/MyApiWidget.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -35,11 +36,13 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             MyCustomForm(),
             MyTopSection(),
-            Expanded(child: SizedBox(height: 200, child: MyListView())),
+            Expanded(child: Container(height: 200, child: MyListView())),
+            MyApiWidget()
           ],
         ),
       ),
       floatingActionButton: MyFloatingActionButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }
