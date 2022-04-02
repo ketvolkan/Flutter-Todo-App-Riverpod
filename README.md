@@ -1,6 +1,18 @@
-<h1> Riverpod Todo App Example </h1>
+# TodoApp
+<h3> dependencies: </h3>
+&emsp;flutter_riverpod: ^2.0.0-dev.5
 
-<h2>Flutter Riverpod Kullanarak Yaptığım Bir TodoApp Projesi.</h2>
+<h3> versions: </h3>
+&emsp;dart: 2.16.1 
+&emsp;flutter: 2.10.3
+<h3> aim: </h3>
+&emsp;1: Yapılacaklar Listesi Uygulaması 
+
+<h3> extra: </h3>
+&emsp;1: Projeyi yaparken state managment için Riverpod kullanılmıştır.
+
+<h3> in-app image: </h3>
+
 <a href ="https://kettodoapp.netlify.app/#/">Todo App Example In Website<a>
 <br>
 
